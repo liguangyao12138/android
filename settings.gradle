@@ -1,2 +1,3 @@
+include ':primarycontrol'
 include ':app'
 rootProject.name = "DataStorage"
