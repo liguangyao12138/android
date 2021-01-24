@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DataStorage">
+        <activity android:name=".simpleLayout.BasicViewActivity"></activity>
+        <activity android:name=".simpleLayout.SimpleLayoutActivity" />
+        <activity android:name=".screen.ScreenActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
