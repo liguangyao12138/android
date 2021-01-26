@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".simpleLayout.SimpleLayoutActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_simple_layout_basicView"
+            android:text="2.2.1 视图View的基本属性"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_linearLayout"
+            android:textAllCaps="false"
+            android:text="2.2.2 线性布局 LinearLayout"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_scrollView"
+            android:textAllCaps="false"
+            android:text="2.2.3 滚动视图 ScrollView"/>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

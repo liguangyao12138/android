@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.screen.ScreenActivity;
+import com.example.myapplication.simpleControl.SimpleControlActivity;
 import com.example.myapplication.simpleLayout.BasicViewActivity;
+import com.example.myapplication.simpleLayout.SimpleLayoutActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.btn_main_screenDisplay).setOnClickListener(this);
         findViewById(R.id.btn_main_simpleLayout).setOnClickListener(this);
+        findViewById(R.id.btn_main_simpleControl).setOnClickListener(this);
 
     }
 
@@ -40,9 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_main_simpleLayout:
-                Intent intent_simpleLayout = new Intent(this , BasicViewActivity.class);
+                Intent intent_simpleLayout = new Intent(this , SimpleLayoutActivity.class);
                 startActivity(intent_simpleLayout);
                 break;
+
+            case R.id.btn_main_simpleControl:
+                Intent intent_simpleControl = new Intent(this, SimpleControlActivity.class);
+                startActivity(intent_simpleControl);
+                break;
+
         }
     }
 }

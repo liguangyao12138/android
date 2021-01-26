@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".simpleControl.TextViewActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="跑马灯效果，点击暂停，再点击恢复"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_marquee"
+        android:layout_marginTop="20dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:text="快讯：红色预警，超强台风“莫兰蒂”即将登陆，请居民关紧门窗、备足粮草，做好防汛救灾的准备！"/>
+
+
+    <TextView
+        android:id="@+id/tv_chatRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="聊天室效果，点击添加聊天记录，长按删除聊天记录"/>
+
+    <TextView
+        android:id="@+id/tv_chatRoom_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:gravity="left|bottom"
+        android:lines="8"
+        android:maxLines="8"
+        android:scrollbars="vertical"
+        android:textColor="#000000"
+        android:textSize="17sp"/>
+
+</LinearLayout>
