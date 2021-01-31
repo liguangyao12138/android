@@ -8,22 +8,24 @@
     tools:context=".MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:id="@+id/btn_main_screenDisplay"
         android:text="2.1 屏幕显示"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="2.2 简单布局"
         android:id="@+id/btn_main_simpleLayout"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2.2 简单控件"
+        style="@style/ButtonStyle"
+        android:text="2.3 简单控件"
         android:id="@+id/btn_main_simpleControl"/>
+
+    <Button
+        style="@style/ButtonStyle"
+        android:text="2.4 图形基础"
+        android:id="@+id/btn_main_basicDrawable"/>
 
 
 

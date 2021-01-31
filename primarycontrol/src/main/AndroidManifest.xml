@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DataStorage">
-        <activity android:name=".simpleControl.TextViewActivity"></activity>
+        <activity android:name=".basicDrawable.DrawableActivity"></activity>
+        <activity android:name=".simpleControl.ImageButtonActivity" />
+        <activity android:name=".simpleControl.ImageViewActivity" />
+        <activity android:name=".simpleControl.ButtonActivity" />
+        <activity android:name=".simpleControl.TextViewActivity" />
         <activity android:name=".simpleControl.SimpleControlActivity" />
         <activity android:name=".simpleLayout.ScrollViewActivity" />
         <activity android:name=".simpleLayout.LinearLayoutActivity" />

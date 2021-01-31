@@ -9,7 +9,11 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.util.DateUtil;
-
+/**
+ * @author liguangyao
+ * @date 2021-02-01
+ * @description： textView的属性 聊天界面
+ */
 public class TextViewActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
     private Boolean isPaused = false;
@@ -19,7 +23,7 @@ public class TextViewActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_chatRoom_content;
     private String[] mChatStr = {"你吃饭了吗？", "今天天气真好呀。",
             "我中奖啦！", "我们去看电影吧", "晚上干什么好呢？"};
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

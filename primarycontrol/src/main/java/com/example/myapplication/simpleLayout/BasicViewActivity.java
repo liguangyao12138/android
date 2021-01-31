@@ -6,6 +6,11 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 
+/**
+ * @author liguangyao
+ * @date 2021-02-01
+ * @description： 基础页面
+ */
 public class BasicViewActivity extends AppCompatActivity {
 
     @Override

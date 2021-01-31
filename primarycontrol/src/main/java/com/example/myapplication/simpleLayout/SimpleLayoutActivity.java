@@ -8,7 +8,11 @@ import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.screen.ScreenActivity;
-
+/**
+ * @author liguangyao
+ * @date 2021-02-01
+ * @description： 基础布局主界面
+ */
 public class SimpleLayoutActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override

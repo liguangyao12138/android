@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".simpleControl.ImageViewActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/iv_imageView"
+                android:src="@drawable/apple"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_iv_center"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="center" />
+
+                <Button
+                    android:id="@+id/btn_iv_fitCenter"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="fitCenter" />
+
+                <Button
+                    android:id="@+id/btn_iv_centerCrop"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="centerCrop" />
+
+                <Button
+                    android:id="@+id/btn_iv_centerInside"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="centerInside" />
+
+                <Button
+                    android:id="@+id/btn_iv_fitXY"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="fitXY" />
+
+                <Button
+                    android:id="@+id/btn_iv_fitStart"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="fitStart" />
+
+                <Button
+                    android:id="@+id/btn_iv_fitEnd"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="fitEnd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_imageView_chatContent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/iv_imageView_screenshot"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_iv_chat"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="聊天"/>
+
+                <Button
+                    android:id="@+id/btn_iv_screenshot"
+                    style="@style/ButtonStyle"
+                    android:layout_weight="1"
+                    android:text="截图"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

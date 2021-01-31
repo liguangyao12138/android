@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".simpleLayout.SimpleLayoutActivity">
+    tools:context=".simpleControl.ButtonActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,18 +13,8 @@
 
         <Button
             style="@style/ButtonStyle"
-            android:id="@+id/btn_simple_layout_basicView"
-            android:text="2.2.1 视图View的基本属性" />
-
-        <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_linearLayout"
-            android:text="2.2.2 线性布局 LinearLayout"/>
-
-        <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_scrollView"
-            android:text="2.2.3 滚动视图 ScrollView"/>
+            android:text="按钮"
+            android:id="@+id/btn_button"/>
 
     </LinearLayout>
 

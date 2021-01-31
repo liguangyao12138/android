@@ -8,10 +8,23 @@
     tools:context=".simpleControl.SimpleControlActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:id="@+id/btn_simple_control_textView"
-        android:text="2.3.1 文本视图 TextView"
-        android:textAllCaps="false"/>
+        android:text="2.3.1 文本视图 TextView" />
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_simple_control_button"
+        android:text="2.3.2 按钮 Button" />
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_simple_control_imageView"
+        android:text="2.3.3 图像视图 ImageView" />
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_simple_control_imageButton"
+        android:text="2.3.4 图像按钮 ImageButton" />
 
 </LinearLayout>
