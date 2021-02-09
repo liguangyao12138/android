@@ -10,6 +10,7 @@ import com.example.intermediatecontrol.otherLayout.OtherLayoutActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //测试
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
