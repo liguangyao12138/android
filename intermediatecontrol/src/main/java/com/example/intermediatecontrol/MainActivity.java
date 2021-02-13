@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.intermediatecontrol.otherLayout.OtherLayoutActivity;
+import com.example.intermediatecontrol.specialButtons.SpecialButtonActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void bindView() {
 
         findViewById(R.id.btn_main_otherLayout).setOnClickListener(this);
+        findViewById(R.id.btn_main_specialButton).setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent_otherLayout);
                 break;
 
+            case R.id.btn_main_specialButton:
+                Intent intent_specialButton = new Intent(this , SpecialButtonActivity.class);
+                startActivity(intent_specialButton);
+                break;
 
         }
     }

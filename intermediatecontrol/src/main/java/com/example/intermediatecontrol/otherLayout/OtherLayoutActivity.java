@@ -21,6 +21,7 @@ public class OtherLayoutActivity extends AppCompatActivity implements View.OnCli
     private void bindView() {
 
         findViewById(R.id.btn_otherLayout_relativeLayout).setOnClickListener(this);
+        findViewById(R.id.btn_otherLayout_frameLayout).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +34,10 @@ public class OtherLayoutActivity extends AppCompatActivity implements View.OnCli
                 startActivity(intent_relativeLayout);
                 break;
 
+            case R.id.btn_otherLayout_frameLayout:
+                Intent intent_frameLayout = new Intent(this,FrameLayoutActivity.class);
+                startActivity(intent_frameLayout);
+                break;
 
         }
     }

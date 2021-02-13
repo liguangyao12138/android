@@ -12,6 +12,13 @@
         android:id="@+id/btn_main_otherLayout"
         android:text="3.1 其他布局"/>
 
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_main_specialButton"
+        android:text="3.2 特殊按钮"/>
+
+
+
 
 
 

@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DataStorage">
-        <activity android:name=".otherLayout.RelativeLayoutActivity"></activity>
+        <activity android:name=".specialButtons.SwitchActivity"></activity>
+        <activity android:name=".specialButtons.CheckBoxActivity" />
+        <activity android:name=".specialButtons.SpecialButtonActivity" />
+        <activity android:name=".otherLayout.FrameLayoutActivity" />
+        <activity android:name=".otherLayout.RelativeLayoutActivity" />
         <activity android:name=".otherLayout.OtherLayoutActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

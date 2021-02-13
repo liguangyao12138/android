@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".otherLayout.OtherLayoutActivity">
+    tools:context=".specialButtons.SpecialButtonActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,15 +13,13 @@
 
         <Button
             style="@style/ButtonStyle"
-            android:id="@+id/btn_otherLayout_relativeLayout"
-            android:text="3.1.1 相对布局 RelativeLayout"/>
+            android:id="@+id/btn_specialButton_checkBox"
+            android:text="3.2.1 复选框 CheckBox"/>
 
         <Button
             style="@style/ButtonStyle"
-            android:id="@+id/btn_otherLayout_frameLayout"
-            android:text="3.1.2 框架布局 FrameLayout"/>
-
+            android:id="@+id/btn_specialButton_switch"
+            android:text="3.2.2 开关按钮 Switch"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
