@@ -17,9 +17,20 @@
         android:id="@+id/btn_main_specialButton"
         android:text="3.2 特殊按钮"/>
 
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_main_fitview"
+        android:text="3.3 适配视图基础"/>
 
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_main_editText"
+        android:text="3.4 编辑框"/>
 
-
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/btn_main_activity"
+        android:text="3.5 活动Activity基础"/>
 
 
     </LinearLayout>

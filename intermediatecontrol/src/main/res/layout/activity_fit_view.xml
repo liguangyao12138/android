@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".specialButtons.SpecialButtonActivity">
+    tools:context=".fitView.FitViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,18 +13,14 @@
 
         <Button
             style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_checkBox"
-            android:text="3.2.1 复选框 CheckBox"/>
+            android:id="@+id/btn_fitview_spinner"
+            android:text="3.3.1 下拉框 Spinner"/>
 
         <Button
             style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_switch"
-            android:text="3.2.2 开关按钮 Switch"/>
-
-        <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_radioButton"
-            android:text="3.2.3 单选按钮 RadioButton"/>
+            android:id="@+id/btn_fitview_simpleAdapter"
+            android:text="3.3.3 简单适配器 SimpleAdapter"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

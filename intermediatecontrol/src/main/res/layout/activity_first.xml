@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".specialButtons.SpecialButtonActivity">
+    tools:context=".activity.FirstActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,19 +12,19 @@
         android:orientation="vertical">
 
         <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_checkBox"
-            android:text="3.2.1 复选框 CheckBox"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_firstActivity"
+            android:text="第一个Activity"
+            android:textAllCaps="false"/>
 
         <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_switch"
-            android:text="3.2.2 开关按钮 Switch"/>
-
-        <Button
-            style="@style/ButtonStyle"
-            android:id="@+id/btn_specialButton_radioButton"
-            android:text="3.2.3 单选按钮 RadioButton"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_requestActivity"
+            android:text="传输数据"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

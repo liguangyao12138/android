@@ -23,6 +23,7 @@ public class SpecialButtonActivity extends AppCompatActivity implements View.OnC
 
         findViewById(R.id.btn_specialButton_checkBox).setOnClickListener(this);
         findViewById(R.id.btn_specialButton_switch).setOnClickListener(this);
+        findViewById(R.id.btn_specialButton_radioButton).setOnClickListener(this);
     }
 
 
@@ -41,6 +42,12 @@ public class SpecialButtonActivity extends AppCompatActivity implements View.OnC
                 Intent intent_switch = new Intent(this , SwitchActivity.class);
                 startActivity(intent_switch);
                 break;
+
+            case R.id.btn_specialButton_radioButton:
+                Intent intent_radioButton = new Intent(this, RadioButtonActivity.class);
+                startActivity(intent_radioButton);
+                break;
+
         }
     }
 }
