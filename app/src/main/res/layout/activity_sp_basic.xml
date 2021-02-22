@@ -166,4 +166,12 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/btn_sp_basic_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取存储的内容"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
 </LinearLayout>

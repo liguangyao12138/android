@@ -8,12 +8,14 @@ import android.view.View;
 
 import com.example.datastorage.sharedPreferences.SharedPreferencesActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 /**
  * @author liguangyao
  * @date 2021/01/19
  * @description： 数据存储的主界面
  */
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

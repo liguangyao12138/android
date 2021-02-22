@@ -13,4 +13,10 @@
         android:text="4.1.1 共享参数基本用法"
         android:id="@+id/btn_sp_basic"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.1.2 实现记住密码功能"
+        android:id="@+id/btn_sp_rememberPassword"/>
+
 </LinearLayout>
