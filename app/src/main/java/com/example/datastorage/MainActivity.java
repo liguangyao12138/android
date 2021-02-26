@@ -14,6 +14,7 @@ import com.example.datastorage.sharedPreferences.SharedPreferencesActivity;
  * @description： 数据存储的主界面
  */
 
+//测试
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
