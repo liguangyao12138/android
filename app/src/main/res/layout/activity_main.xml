@@ -17,7 +17,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:id="@+id/btn_main_sql"
+        android:text="4.2 数据库 SQLite"/>
 
 
 </LinearLayout>

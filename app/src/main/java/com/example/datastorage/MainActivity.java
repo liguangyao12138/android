@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.datastorage.sharedPreferences.SharedPreferencesActivity;
+import com.example.datastorage.sqlite.SqliteActivity;
 
 /**
  * @author liguangyao
@@ -23,13 +24,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.btn_main_sharedPreferences).setOnClickListener(this);
+        findViewById(R.id.btn_main_sql).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+
         if(v.getId() == R.id.btn_main_sharedPreferences){
             Intent intent = new Intent(this, SharedPreferencesActivity.class);
             startActivity(intent);
+
+        }else if(v.getId() == R.id.btn_main_sql){
+            Intent intent_sql = new Intent(this , SqliteActivity.class);
+            startActivity(intent_sql);
         }
     }
 }
