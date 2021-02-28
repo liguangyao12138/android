@@ -10,7 +10,13 @@ import android.widget.TextView;
 
 import com.example.datastorage.R;
 
-public class SqlCreateDelActivity extends AppCompatActivity implements View.OnClickListener {
+/**
+ * @author liguangyao
+ * @date 2021/02/28
+ * @description： SQLite的基本用法  创建和删除数据库
+ */
+
+public class SqliteBasicActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tv_sql_createDel;
     private String mDatabaseName;
@@ -18,7 +24,7 @@ public class SqlCreateDelActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sql_create_del);
+        setContentView(R.layout.activity_sqlite_basic);
 
         tv_sql_createDel = findViewById(R.id.tv_sql_createDel);
         findViewById(R.id.btn_sql_create).setOnClickListener(this);

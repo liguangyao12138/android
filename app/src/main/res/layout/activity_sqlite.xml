@@ -14,8 +14,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创建与删除数据库"
-            android:id="@+id/btn_sql_createDel"/>
+            android:text="4.2.1 SQLite的基本用法"
+            android:id="@+id/btn_sql_basicUsage"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_sqliteOpenHelper"
+            android:text="4.2.2 数据库帮助器 SQLiteOpenHelper"/>
+
+
 
     </LinearLayout>
 
