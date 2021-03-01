@@ -17,6 +17,7 @@ public class SqliteActivity extends AppCompatActivity implements View.OnClickLis
 
         findViewById(R.id.btn_sql_basicUsage).setOnClickListener(this);
         findViewById(R.id.btn_sqliteOpenHelper).setOnClickListener(this);
+        findViewById(R.id.btn_sql_rememberPassword).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +34,12 @@ public class SqliteActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intent_sqliteOpenHelper = new Intent(this , OpenHelperActivity.class);
                 startActivity(intent_sqliteOpenHelper);
                 break;
+
+            case R.id.btn_sql_rememberPassword:
+                Intent intent_sql_rememberPassword = new Intent(this , RemenberPasswordSqliteActivity.class);
+                startActivity(intent_sql_rememberPassword);
+                break;
+
         }
     }
 }

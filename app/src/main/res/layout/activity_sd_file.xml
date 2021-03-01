@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sqlite.SqliteActivity">
+    tools:context=".sdFile.SdFileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,21 +14,20 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.2.1 SQLite的基本用法"
-            android:id="@+id/btn_sql_basicUsage"/>
+            android:text="4.3.1 SD卡的基本操作"
+            android:id="@+id/btn_file_basicOperation"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_sqliteOpenHelper"
-            android:text="4.2.2 数据库帮助器 SQLiteOpenHelper"
-            android:textAllCaps="false"/>
+            android:text="4.3.2 公有存储空间和私有存储空间"
+            android:id="@+id/btn_file_storage"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_sql_rememberPassword"
-            android:text="4.2.3 优化记住密码功能"/>
+            android:text="4.3.3 文本文件读写"
+            android:id="@+id/btn_file_textFile"/>
 
 
 
