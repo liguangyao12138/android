@@ -18,6 +18,7 @@ public class SdFileActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.btn_file_basicOperation).setOnClickListener(this);
         findViewById(R.id.btn_file_storage).setOnClickListener(this);
         findViewById(R.id.btn_file_textFile).setOnClickListener(this);
+        findViewById(R.id.btn_file_image).setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +39,11 @@ public class SdFileActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_file_textFile:
                 Intent intent_file_textFile = new Intent(this , TextFileActivity.class);
                 startActivity(intent_file_textFile);
+                break;
+
+            case R.id.btn_file_image:
+                Intent intent_file_image = new Intent(this , ImageReadWriteActivity.class);
+                startActivity(intent_file_image);
                 break;
         }
 

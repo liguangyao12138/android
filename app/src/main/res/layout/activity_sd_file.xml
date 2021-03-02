@@ -29,6 +29,11 @@
             android:text="4.3.3 文本文件读写"
             android:id="@+id/btn_file_textFile"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.3.4 图片文件读写"
+            android:id="@+id/btn_file_image"/>
 
 
     </LinearLayout>
