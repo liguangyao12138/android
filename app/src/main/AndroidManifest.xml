@@ -16,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DataStorage">
-        <activity android:name=".sdFile.ImageReadWriteActivity"></activity>
+        <activity android:name=".application.GlobalVariableActivity"></activity>
+        <activity android:name=".application.SecondActivity" />
+        <activity android:name=".application.ApplicationLifeCycleActivity" />
+        <activity android:name=".application.ApplicationBasicActivity" />
+        <activity android:name=".sdFile.ImageReadWriteActivity" />
         <activity android:name=".sdFile.TextFileActivity" />
         <activity android:name=".sdFile.StorageActivity" />
         <activity android:name=".sdFile.SdBasicOperationActivity" />

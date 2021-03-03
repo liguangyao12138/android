@@ -26,5 +26,11 @@
         android:id="@+id/btn_main_SdFile"
         android:text="4.3 SD卡文件操作"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_main_application"
+        android:text="4.4 应用Application基础"/>
+
 
 </LinearLayout>

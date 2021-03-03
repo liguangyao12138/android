@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.datastorage.application.ApplicationBasicActivity;
 import com.example.datastorage.sdFile.SdFileActivity;
 import com.example.datastorage.sharedPreferences.SharedPreferencesActivity;
 import com.example.datastorage.sqlite.SqliteActivity;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_main_sharedPreferences).setOnClickListener(this);
         findViewById(R.id.btn_main_sql).setOnClickListener(this);
         findViewById(R.id.btn_main_SdFile).setOnClickListener(this);
+        findViewById(R.id.btn_main_application).setOnClickListener(this);
 
     }
 
@@ -43,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v.getId() == R.id.btn_main_SdFile){
             Intent intent_SdFile = new Intent(this , SdFileActivity.class);
             startActivity(intent_SdFile);
+
+        }else if(v.getId() == R.id.btn_main_application){
+            Intent intent_application = new Intent(this , ApplicationBasicActivity.class);
+            startActivity(intent_application);
+
         }
     }
 }
