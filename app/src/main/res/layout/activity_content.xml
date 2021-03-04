@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".application.ApplicationBasicActivity">
+    tools:context=".contentProvider.ContentActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +14,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_application_lifeCycle"
-            android:text="4.4.1 Application的生命周期"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_application_globalMemory"
-            android:text="4.4.2 利用Application操作全局变量"/>
+            android:text="4.5.1 内容提供器 ContentProvider"
+            android:id="@+id/btn_content_contentProvider"/>
 
     </LinearLayout>
 
