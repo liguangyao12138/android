@@ -1,3 +1,4 @@
+include ':calculator'
 include ':intermediatecontrol'
 include ':primarycontrol'
 include ':app'
