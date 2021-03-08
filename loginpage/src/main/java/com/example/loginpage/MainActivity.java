@@ -2,14 +2,26 @@ package com.example.loginpage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.loginpage.util.ViewUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,23 +64,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rg_login.setOnCheckedChangeListener(new RadioListener());
 
         // 给ck_remember设置勾选监听器
-        //ck_remember.setOnCheckedChangeListener(new CheckListener());
+        ck_remember.setOnCheckedChangeListener(new CheckListener());
 
         // 给et_phone添加文本变更监听器
-        //et_phone.addTextChangedListener(new HideTextWatcher(et_phone));
+        et_phone.addTextChangedListener(new HideTextWatcher(et_phone));
 
         // 给et_password添加文本变更监听器
-        //et_password.addTextChangedListener(new HideTextWatcher(et_password));
+        et_password.addTextChangedListener(new HideTextWatcher(et_password));
 
         btn_forget.setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
 
-        //initTypeSpinner();
+        initTypeSpinner();
 
+    }
+
+    private String[] typeArray = {"个人用户", "公司用户"};
+    // 初始化用户类型的下拉框
+    private void initTypeSpinner() {
+
+        // 声明一个下拉列表的数组适配器
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this,
+                R.layout.item_select, typeArray);
+        // 设置数组适配器的布局样式
+        typeAdapter.setDropDownViewResource(R.layout.item_dropdown);
+        // 从布局文件中获取名叫sp_type的下拉框
+        Spinner sp_type = findViewById(R.id.sp_type);
+        // 设置下拉框的标题
+        sp_type.setPrompt("请选择用户类型");
+        // 设置下拉框的数组适配器
+        sp_type.setAdapter(typeAdapter);
+        // 设置下拉框默认显示第几项
+        sp_type.setSelection(mType);
+        // 给下拉框设置选择监听器，一旦用户选中某一项，就触发监听器的onItemSelected方法
+        sp_type.setOnItemSelectedListener(new TypeSelectedListener());
     }
 
     @Override
     public void onClick(View v) {
+
+        String phone = et_phone.getText().toString();
+
+        if(v.getId() == R.id.btn_forget){
+
+            if (phone.length() < 11) { // 手机号码不足11位
+                Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (rb_password.isChecked()) { // 选择了密码方式校验，此时要跳到找回密码页面
+                Intent intent = new Intent(this, LoginForgetActivity.class);
+                // 携带手机号码跳转到找回密码页面
+                intent.putExtra("phone", phone);
+                startActivityForResult(intent, mRequestCode);
+            } else if (rb_verifycode.isChecked()) { // 选择了验证码方式校验，此时要生成六位随机数字验证码
+                // 生成六位随机数字的验证码
+                mVerifyCode = String.format("%06d", (int) (Math.random() * 1000000 % 1000000));
+                // 弹出提醒对话框，提示用户六位验证码数字
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("请记住验证码");
+                builder.setMessage("手机号" + phone + "，本次验证码是" + mVerifyCode + "，请输入验证码");
+                builder.setPositiveButton("好的", null);
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        }else if (v.getId() == R.id.btn_login) { // 点击了“登录”按钮
+            if (phone.length() < 11) { // 手机号码不足11位
+                Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (rb_password.isChecked()) { // 密码方式校验
+                if (!et_password.getText().toString().equals(mPassword)) {
+                    Toast.makeText(this, "请输入正确的密码", Toast.LENGTH_SHORT).show();
+                } else { // 密码校验通过
+                    loginSuccess(); // 提示用户登录成功
+                }
+            } else if (rb_verifycode.isChecked()) { // 验证码方式校验
+                if (!et_password.getText().toString().equals(mVerifyCode)) {
+                    Toast.makeText(this, "请输入正确的验证码", Toast.LENGTH_SHORT).show();
+                } else { // 验证码校验通过
+                    loginSuccess(); // 提示用户登录成功
+                }
+            }
+        }
 
     }
 
@@ -93,5 +171,109 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         }
+    }
+
+    // 定义是否记住密码的勾选监听器
+    private class CheckListener implements CompoundButton.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            if(buttonView.getId() == R.id.ck_remember){
+                bRemember = isChecked;
+            }
+
+        }
+    }
+
+    // 定义编辑框的文本变化监听器
+    private class HideTextWatcher implements TextWatcher {
+
+        private EditText mView;
+        private int mMaxLength;
+        private CharSequence mStr;
+
+        HideTextWatcher(EditText v) {
+            super();
+            mView = v;
+            mMaxLength = ViewUtil.getMaxLength(v);
+        }
+
+        // 在编辑框的输入文本变化前触发
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        // 在编辑框的输入文本变化时触发
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            mStr = s;
+        }
+
+        // 在编辑框的输入文本变化后触发
+        @Override
+        public void afterTextChanged(Editable s) {
+
+            if (mStr == null || mStr.length() == 0)
+                return;
+            // 手机号码输入达到11位，或者密码/验证码输入达到6位，都关闭输入法软键盘
+            if ((mStr.length() == 11 && mMaxLength == 11) ||
+                    (mStr.length() == 6 && mMaxLength == 6)) {
+                ViewUtil.hideOneInputMethod(MainActivity.this, mView);
+            }
+        }
+    }
+
+    // 定义用户类型的选择监听器
+    private class TypeSelectedListener implements android.widget.AdapterView.OnItemSelectedListener {
+        @Override
+        // 选择事件的处理方法，其中arg2代表选择项的序号
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            mType = position;
+        }
+
+        @Override
+        // 未选择时的处理方法，通常无需关注
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    // 从后一个页面携带参数返回当前页面时触发
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == mRequestCode && data != null) {
+            // 用户密码已改为新密码，故更新密码变量
+            mPassword = data.getStringExtra("new_password");
+        }
+    }
+
+    // 从修改密码页面返回登录页面，要清空密码的输入框
+    @Override
+    protected void onRestart() {
+        et_password.setText("");
+        super.onRestart();
+    }
+
+    // 校验通过，登录成功
+    private void loginSuccess() {
+        String desc = String.format("您的手机号码是%s，类型是%s。恭喜你通过登录验证，点击“确定”按钮返回上个页面",
+                et_phone.getText().toString(), typeArray[mType]);
+        // 弹出提醒对话框，提示用户登录成功
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("登录成功");
+        builder.setMessage(desc);
+        builder.setPositiveButton("确定返回", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("我再看看", null);
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
