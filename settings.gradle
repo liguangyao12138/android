@@ -1,3 +1,4 @@
+include ':shoppingcart'
 include ':loginpage'
 include ':calculator'
 include ':intermediatecontrol'

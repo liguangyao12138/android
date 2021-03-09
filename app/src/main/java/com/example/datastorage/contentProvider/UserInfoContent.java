@@ -8,7 +8,7 @@ import com.example.datastorage.database.UserDBHelper;
 
 public class UserInfoContent implements BaseColumns {
     // 这里的名称必须与AndroidManifest.xml里的android:authorities保持一致
-    public static final String AUTHORITIES = "com.example.storage.provider.UserInfoProvider";
+    public static final String AUTHORITIES = "com.example.datastorage.contentProvider.UserInfoProvider";
     // 表名
     public static final String TABLE_NAME = UserDBHelper.TABLE_NAME;
     // 访问该内容提供器的URI
