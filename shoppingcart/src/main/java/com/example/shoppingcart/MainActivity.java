@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showCart();
     }
 
+
     private void bindView() {
 
         iv_title_menu = findViewById(R.id.iv_title_menu);
