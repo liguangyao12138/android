@@ -5,11 +5,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +28,7 @@ import com.example.shoppingcart.bean.CartInfo;
 import com.example.shoppingcart.bean.GoodsInfo;
 import com.example.shoppingcart.database.CartDBHelper;
 import com.example.shoppingcart.database.GoodsDBHelper;
+import com.example.shoppingcart.util.FileUtil;
 import com.example.shoppingcart.util.SharedUtil;
 
 import java.util.ArrayList;
@@ -52,6 +61,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         bindView();
+    }
+
+    // 声明一个起始的视图编号
+    private int mBeginViewId = 0x7F24FFF0;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 关闭商品数据库的数据库连接
+        mGoodsHelper.closeLink();
+        // 关闭购物车数据库的数据库连接
+        mCartHelper.closeLink();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 获取共享参数保存的购物车中的商品数量
+        mCount = Integer.parseInt(SharedUtil.getIntance(this).readShared("count", "0"));
+        showCount(mCount);
+        // 获取商品数据库的帮助器对象
+        mGoodsHelper = GoodsDBHelper.getInstance(this, 1);
+        // 打开商品数据库的写连接
+        mGoodsHelper.openWriteLink();
+        // 获取购物车数据库的帮助器对象
+        mCartHelper = CartDBHelper.getInstance(this, 1);
+        // 打开购物车数据库的写连接
+        mCartHelper.openWriteLink();
+        // 模拟从网络下载商品图片
+        downloadGoods();
+        // 展示购物车中的商品列表
+        showCart();
     }
 
     private void bindView() {
@@ -225,6 +266,149 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             total_price += goods.price * info.count;
         }
         tv_shoppingCart_total_price.setText("" + total_price);
+    }
+
+    // 展示购物车中的商品列表
+    private void showCart() {
+        // 查询购物车数据库中所有的商品记录
+        mCartArray = mCartHelper.query("1=1");
+        Log.d(TAG, "mCartArray.size()=" + mCartArray.size());
+        if (mCartArray == null || mCartArray.size() <= 0) {
+            return;
+        }
+        // 移除线性视图ll_cart下面的所有子视图
+        linear_shoppingCart_cart.removeAllViews();
+        // 创建一个标题行的线性视图ll_row
+        LinearLayout ll_row = newLinearLayout(LinearLayout.HORIZONTAL, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ll_row.addView(newTextView(0, 2, Gravity.CENTER, "图片", Color.BLACK, 15));
+        ll_row.addView(newTextView(0, 3, Gravity.CENTER, "名称", Color.BLACK, 15));
+        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "数量", Color.BLACK, 15));
+        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "单价", Color.BLACK, 15));
+        ll_row.addView(newTextView(0, 1, Gravity.CENTER, "总价", Color.BLACK, 15));
+        // 把标题行添加到购物车列表
+        linear_shoppingCart_cart.addView(ll_row);
+        for (int i = 0; i < mCartArray.size(); i++) {
+            final CartInfo info = mCartArray.get(i);
+            // 根据商品编号查询商品数据库中的商品记录
+            GoodsInfo goods = mGoodsHelper.queryById(info.goods_id);
+            Log.d(TAG, "name=" + goods.name + ",price=" + goods.price + ",desc=" + goods.desc);
+            mGoodsMap.put(info.goods_id, goods);
+            // 创建该商品行的水平线性视图，从左到右依次为商品小图、商品名称与描述、商品数量、商品单价、商品总价。
+            ll_row = newLinearLayout(LinearLayout.HORIZONTAL, ViewGroup.LayoutParams.WRAP_CONTENT);
+            // 设置该线性视图的编号
+            ll_row.setId(mBeginViewId + i);
+            // 添加商品小图
+            ImageView iv_thumb = new ImageView(this);
+            LinearLayout.LayoutParams iv_params = new LinearLayout.LayoutParams(
+                    0, ViewGroup.LayoutParams.WRAP_CONTENT, 2);
+            iv_thumb.setLayoutParams(iv_params);
+            iv_thumb.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            iv_thumb.setImageBitmap(MainApplication.getInstance().mIconMap.get(info.goods_id));
+            ll_row.addView(iv_thumb);
+            // 添加商品名称与描述
+            LinearLayout ll_name = new LinearLayout(this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    0, ViewGroup.LayoutParams.MATCH_PARENT, 3);
+            ll_name.setLayoutParams(params);
+            ll_name.setOrientation(LinearLayout.VERTICAL);
+            ll_name.addView(newTextView(-3, 1, Gravity.LEFT, goods.name, Color.BLACK, 17));
+            ll_name.addView(newTextView(-3, 1, Gravity.LEFT, goods.desc, Color.GRAY, 12));
+            ll_row.addView(ll_name);
+            // 添加商品数量、单价和总价
+            ll_row.addView(newTextView(1, 1, Gravity.CENTER, "" + info.count, Color.BLACK, 17));
+            ll_row.addView(newTextView(1, 1, Gravity.RIGHT, "" + (int) goods.price, Color.BLACK, 15));
+            ll_row.addView(newTextView(1, 1, Gravity.RIGHT, "" + (int) (info.count * goods.price), Color.RED, 17));
+            // 给商品行添加点击事件
+            ll_row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goDetail(info.goods_id);
+                }
+            });
+            // 给商品行注册上下文菜单，为防止重复注册，这里先注销再注册
+            unregisterForContextMenu(ll_row);
+            registerForContextMenu(ll_row);
+            mCartGoods.put(ll_row.getId(), info);
+            // 往购物车列表添加该商品行
+            linear_shoppingCart_cart.addView(ll_row);
+        }
+        // 重新计算购物车中的商品总金额
+        refreshTotalPrice();
+    }
+
+    // 创建一个线性视图的框架
+    private LinearLayout newLinearLayout(int orientation, int height) {
+        LinearLayout ll_new = new LinearLayout(this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, height);
+        ll_new.setLayoutParams(params);
+        ll_new.setOrientation(orientation);
+        ll_new.setBackgroundColor(Color.WHITE);
+        return ll_new;
+    }
+
+    // 创建一个文本视图的模板
+    private TextView newTextView(int height, float weight, int gravity, String text, int textColor, int textSize) {
+        TextView tv_new = new TextView(this);
+        if (height == -3) {  // 垂直排列
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, 0, weight);
+            tv_new.setLayoutParams(params);
+        } else {  // 水平排列
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    0, (height == 0) ? ViewGroup.LayoutParams.WRAP_CONTENT : ViewGroup.LayoutParams.MATCH_PARENT, weight);
+            tv_new.setLayoutParams(params);
+        }
+        tv_new.setText(text);
+        tv_new.setTextColor(textColor);
+        tv_new.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        tv_new.setGravity(Gravity.CENTER | gravity);
+        return tv_new;
+    }
+
+    private String mFirst = "true"; // 是否首次打开
+    // 模拟网络数据，初始化数据库中的商品信息
+    private void downloadGoods() {
+        // 获取共享参数保存的是否首次打开参数
+        mFirst = SharedUtil.getIntance(this).readShared("first", "true");
+        // 获取当前App的私有存储路径
+        String path = MainApplication.getInstance().getExternalFilesDir(
+                Environment.DIRECTORY_DOWNLOADS).toString() + "/";
+        if (mFirst.equals("true")) { // 如果是首次打开
+            ArrayList<GoodsInfo> goodsList = GoodsInfo.getDefaultList();
+            for (int i = 0; i < goodsList.size(); i++) {
+                GoodsInfo info = goodsList.get(i);
+                // 往商品数据库插入一条该商品的记录
+                long rowid = mGoodsHelper.insert(info);
+                info.rowid = rowid;
+                // 往全局内存写入商品小图
+                Bitmap thumb = BitmapFactory.decodeResource(getResources(), info.thumb);
+                MainApplication.getInstance().mIconMap.put(rowid, thumb);
+                String thumb_path = path + rowid + "_s.jpg";
+                FileUtil.saveImage(thumb_path, thumb);
+                info.thumb_path = thumb_path;
+                // 往SD卡保存商品大图
+                Bitmap pic = BitmapFactory.decodeResource(getResources(), info.pic);
+                String pic_path = path + rowid + ".jpg";
+                FileUtil.saveImage(pic_path, pic);
+                pic.recycle();
+                info.pic_path = pic_path;
+                // 更新商品数据库中该商品记录的图片路径
+                mGoodsHelper.update(info);
+            }
+        } else { // 不是首次打开
+            // 查询商品数据库中所有商品记录
+            ArrayList<GoodsInfo> goodsArray = mGoodsHelper.query("1=1");
+            for (int i = 0; i < goodsArray.size(); i++) {
+                GoodsInfo info = goodsArray.get(i);
+                // 从指定路径读取图片文件的位图数据
+                Bitmap thumb = BitmapFactory.decodeFile(info.thumb_path);
+                // 把该位图对象保存到应用实例的全局变量中
+                MainApplication.getInstance().mIconMap.put(info.rowid, thumb);
+            }
+        }
+        // 把是否首次打开写入共享参数
+        SharedUtil.getIntance(this).writeShared("first", "false");
     }
 
 }
