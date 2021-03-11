@@ -1,3 +1,4 @@
+include ':perpetualCalendar'
 include ':shoppingcart'
 include ':loginpage'
 include ':calculator'
