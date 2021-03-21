@@ -17,6 +17,12 @@
             android:text="4.5.1 内容提供器 ContentProvider"
             android:id="@+id/btn_content_contentProvider"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5.2 内容解析器 ContentResolver"
+            android:id="@+id/btn_content_contentResolver"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

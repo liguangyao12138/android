@@ -1,3 +1,4 @@
+include ':advancedcontrols'
 include ':schedule'
 include ':perpetualCalendar'
 include ':shoppingcart'

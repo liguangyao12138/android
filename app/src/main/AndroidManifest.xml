@@ -16,8 +16,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DataStorage">
-        <activity android:name=".contentProvider.ContentProviderActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".contentProvider.ContentResolverActivity"></activity>
+        <activity android:name=".contentProvider.ContentProviderActivity" />
         <activity android:name=".contentProvider.ContentActivity" />
         <activity android:name=".application.GlobalVariableActivity" />
         <activity android:name=".application.SecondActivity" />
@@ -44,11 +45,10 @@
         </activity>
 
         <provider
-            android:authorities="com.example.datastorage.contentProvider.UserInfoProvider"
             android:name=".contentProvider.UserInfoProvider"
+            android:authorities="com.example.datastorage.contentProvider.UserInfoProvider"
             android:enabled="true"
-            android:exported="true"/>
-
+            android:exported="true" />
     </application>
 
 </manifest>
