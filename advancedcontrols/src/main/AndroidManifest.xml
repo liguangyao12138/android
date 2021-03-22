@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dateTime.TimePickerActivity"></activity>
+        <activity android:name=".pageFlipView.ViewPagerActivity"></activity>
+        <activity android:name=".pageFlipView.PageFilpViewActivity" />
+        <activity android:name=".listTypeView.GridViewActivity" />
+        <activity android:name=".listTypeView.ListViewActivity" />
+        <activity android:name=".listTypeView.BaseAdapterActivity" />
+        <activity android:name=".listTypeView.ListTypeViewActivity" />
+        <activity android:name=".dateTime.TimePickerActivity" />
         <activity android:name=".dateTime.DatePickerActivity" />
         <activity android:name=".dateTime.DateTimeActivity" />
         <activity android:name=".MainActivity">

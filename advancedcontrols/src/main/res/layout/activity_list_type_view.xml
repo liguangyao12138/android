@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".listTypeView.ListTypeViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,21 +14,23 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_dateTimeDetail"
-            android:text="5.1 日期时间控件"/>
+            android:text="5.2.1 基本适配器 BaseAdapter"
+            android:id="@+id/btn_listTypeView_baseAdapterDetail"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_listTypeViewDetail"
-            android:text="5.2 列表类视图"/>
+            android:text="5.2.2 列表视图 ListView"
+            android:id="@+id/btn_listTypeView_listViewDetail"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_pageFilpViewDetail"
-            android:text="5.3 翻页类视图"/>
+            android:text="5.2.3 网格视图 GridView"
+            android:id="@+id/btn_listTypeView_gridViewDetail"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

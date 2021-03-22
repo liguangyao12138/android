@@ -4,31 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".listTypeView.BaseAdapterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_dateTimeDetail"
-            android:text="5.1 日期时间控件"/>
+            android:gravity="center"
+            android:text="行星的列表视图"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-        <Button
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/sp_baseAdapter_planet"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_listTypeViewDetail"
-            android:text="5.2 列表类视图"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_pageFilpViewDetail"
-            android:text="5.3 翻页类视图"/>
-
+            android:layout_marginTop="10dp"
+            android:spinnerMode="dialog" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

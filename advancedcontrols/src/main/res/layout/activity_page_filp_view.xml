@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".pageFlipView.PageFilpViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,20 +14,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_dateTimeDetail"
-            android:text="5.1 日期时间控件"/>
+            android:text="5.3.1 翻页视图 ViewPager"
+            android:textAllCaps="false"
+            android:id="@+id/btn_pageFilpView_viewPager"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_listTypeViewDetail"
-            android:text="5.2 列表类视图"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_pageFilpViewDetail"
-            android:text="5.3 翻页类视图"/>
 
     </LinearLayout>
 

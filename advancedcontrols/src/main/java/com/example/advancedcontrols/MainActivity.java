@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.advancedcontrols.dateTime.DateTimeActivity;
+import com.example.advancedcontrols.listTypeView.ListTypeViewActivity;
+import com.example.advancedcontrols.pageFlipView.PageFilpViewActivity;
 
 /**
  * @author liguangyao
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void bindViews() {
 
         findViewById(R.id.btn_dateTimeDetail).setOnClickListener(this);
+        findViewById(R.id.btn_listTypeViewDetail).setOnClickListener(this);
+        findViewById(R.id.btn_pageFilpViewDetail).setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent_dateTime);
                 break;
 
+            case R.id.btn_listTypeViewDetail:
+                Intent intent_listType = new Intent(this , ListTypeViewActivity.class);
+                startActivity(intent_listType);
+                break;
+
+            case R.id.btn_pageFilpViewDetail:
+                Intent intent_pageFilpView = new Intent(this , PageFilpViewActivity.class);
+                startActivity(intent_pageFilpView);
+                break;
 
         }
     }
