@@ -1,4 +1,4 @@
-include ':advancedcontrols'
+include ':advancedcontrols', ':shutters'
 include ':schedule'
 include ':perpetualCalendar'
 include ':shoppingcart'
